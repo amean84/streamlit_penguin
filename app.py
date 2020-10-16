@@ -29,13 +29,13 @@ sns.set_palette('terrain')
 
 st.subheader('Barchart')
 bar_objects = df.select_dtypes(include='object')
-bar_count = st.selectbox('I want to count penguins by:', bar_objects.columns)
+bar_count = st.selectbox('I want to count penguins by:', bar_objects.columns, key=1)
 sns.countplot(x=bar_count, data=df)
 plt.title('Penguin Count')
 st.pyplot()
 
 st.subheader('Violin Plot')
-if st.checkbox('Click to view Violin Plot'):
+if st.checkbox('Click to view Violin Plot', key=2):
     violin_cat_objects = df.select_dtypes(include='object')
     violin0 = st.selectbox('Which variable on X-Axis?',violin_cat_objects.columns)
     violin_objects = df.select_dtypes(include='number')
@@ -45,7 +45,7 @@ if st.checkbox('Click to view Violin Plot'):
     st.pyplot()
 
 st.subheader('Scatterplot')
-if st.checkbox('Click to view Scatterplot'):
+if st.checkbox('Click to view Scatterplot', key=3):
     scatter_objects = df.select_dtypes(include='number')
     col1 = st.selectbox('Which variable on X-Axis?',scatter_objects.columns)
     col2 = st.selectbox('Which variable on Y-Axis?',scatter_objects.columns)
@@ -55,7 +55,7 @@ if st.checkbox('Click to view Scatterplot'):
     st.pyplot()
 
 st.subheader('Build Your Own Relational Plot')
-if st.checkbox('Click to view Relational Plot'):
+if st.checkbox('Click to view Relational Plot', key=4):
     cat_options=['species','island','sex']
     plot_options=['scatter','line']
     plot_kind = st.selectbox('Plot Kind:', options=plot_options)
@@ -66,7 +66,7 @@ if st.checkbox('Click to view Relational Plot'):
     st.pyplot()
 
 st.subheader('Pairplot')
-if st.checkbox('Click to view Pairplot of Numerical Features'):
+if st.checkbox('Click to view Pairplot of Numerical Features', key=5):
     sns.pairplot(df, hue='species', markers=["o", "s", "D"])
     st.pyplot()
     
